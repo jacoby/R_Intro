@@ -1,0 +1,39 @@
+Introduction to R
+
+I       History
+    A   Most language names point toward progress.
+        i   C, C++, C#
+    B   R is an open source re-implementation of S
+        I   r <- s
+
+II      Version
+    A   RStudio
+        i   employs Hadley Wickham
+        ii  more on that later
+    B   Microsoft R
+        i   formerly Revolution R
+        ii  this is not as bad as you might think
+    C   r-project.org
+        i   good enough for "Intro to R" purposes
+
+III     First Pass
+    A   As a data shell
+    B   Vectors
+        i   like arrays
+        ii  but not
+    C   Data Frames
+        i   Connected vectors
+        ii  vectors of columns, not rows
+    D   has a history
+
+IV      Rscript
+    A
+    B
+    C
+
+V       Prettyness
+    A
+    B
+    C
+
+
