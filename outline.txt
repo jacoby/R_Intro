@@ -27,9 +27,11 @@ III     First Pass
     D   has a history
 
 IV      Rscript
-    A
-    B
-    C
+    A   As a program 
+    B   Libraries
+        i   Cairo
+        ii  Lots of libraried following the Flickr model
+    C   
 
 V       Prettyness
     A
