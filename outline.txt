@@ -31,11 +31,5 @@ IV      Rscript
     B   Libraries
         i   Cairo
         ii  Lots of libraried following the Flickr model
-    C   
-
-V       Prettyness
-    A
-    B
-    C
-
-
+        iii ggplot2
+    C   Importing different formats
