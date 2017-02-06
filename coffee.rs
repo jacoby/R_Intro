@@ -10,11 +10,28 @@ suppressPackageStartupMessages( require( "ggplot2" , quietly=TRUE ) )
 suppressPackageStartupMessages( require( "RMySQL"  , quietly=TRUE ) )
 suppressPackageStartupMessages( require( "yaml"    , quietly=TRUE ) )
 
-# administrivia 
+# normally, it'd be something like library("Cairo"), but as this runs
+# in cron, there's lots of JUST SHUT UP ALREADY here to keep it from clogging
+# the cron folder
+
+# You can use formats other than data frames in R
+# .my.yaml is MySQL connection info in YAML format
+#   clients:
+#       name:
+#           host:       name of database server
+#           database:   name of database eg(production,test,jacoby)
+#           user:       which database user 
+#           password:   password
+
 my.cnf = yaml.load_file( '~/.my.yaml' )
 database = my.cnf$clients$itap
-quote       <- "'"
-newline     <- "\n"
+con <- dbConnect(
+    MySQL(),
+    user=database$user ,
+    password=database$password,
+    dbname=database$database,
+    host=database$host
+    )
 
 # the query
 coffee_sql <- "
@@ -38,16 +55,16 @@ coffee_sql <- "
     GROUP BY DATE(d.datestamp)
     ORDER BY DATE(d.datestamp)
 "
-
-con <- dbConnect(
-    MySQL(),
-    user=database$user ,
-    password=database$password,
-    dbname=database$database,
-    host=database$host
-    )
-
 coffee.data  <- dbGetQuery( con , coffee_sql )
+
+#   > head(coffee.data)
+#     year wday week cups       date
+#   1 2012    6   44    0 2012-11-02
+#   2 2012    7   44    0 2012-11-03
+#   3 2012    1   45    0 2012-11-04
+#   4 2012    2   45    0 2012-11-05
+#   5 2012    3   45    0 2012-11-06
+#   6 2012    4   45    0 2012-11-07
 
 CairoPNG(
     filename    = "/home/jacoby/www/coffee.png" ,
@@ -56,6 +73,7 @@ CairoPNG(
     pointsize   = 12
     )
 
+# lets make pretty plots
 ggplot(
     coffee.data, 
     aes( week, wday, fill = cups ) ) +
