@@ -8,6 +8,11 @@ vec3    <- rev(vec2)
 p_cols  <- c( "blue" , "red" , "orange" , "green" ) 
 yrange  <- range( 0 , vec , vec2 , vec3 )
 
+vecs <- data.frame(n,vec,vec2,vec3)
+
+# R starts at one, not zero
+nn <- vecs([[1]]) 
+
 plot (
     vec3 ,
     col=p_cols[1] ,
