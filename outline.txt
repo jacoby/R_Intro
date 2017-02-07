@@ -33,3 +33,8 @@ IV      Rscript
         ii  Lots of libraried following the Flickr model
         iii ggplot2
     C   Importing different formats
+
+
+https://www.johndcook.com/blog/r_language_for_programmers/
+
+
